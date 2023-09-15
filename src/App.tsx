@@ -3,12 +3,13 @@ import '@twa-dev/sdk';
 import { TonConnectButton } from '@tonconnect/ui-react';
 import  WebApp from "@twa-dev/sdk";
 import { MainButton } from '@twa-dev/sdk/react';
+import { useTonConnect } from './hooks/useTonConnect';
 
 // import { useSenderAddr } from './hooks/useSenderAddr';
 import { useCounterContract } from './hooks/useCounterContract';
 
 function App() {
-  // const { connected } = useTonConnect();
+  const { connected } = useTonConnect();
   const { getWallerAddr } = useCounterContract();
   return (
     <div className='App'>
@@ -25,7 +26,10 @@ function App() {
             // else {
             //   WebApp.sendData("main button" + wallet.account);
             // }
-            WebApp.sendData(getWallerAddr());
+            if (connected)
+              WebApp.sendData(getWallerAddr());
+            else 
+              WebApp.sendData("");
           }}
         />
       </div>
