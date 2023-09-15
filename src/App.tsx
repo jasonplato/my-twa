@@ -1,9 +1,9 @@
 import './App.css'
 import '@twa-dev/sdk';
-import { TonConnectButton } from '@tonconnect/ui-react';
+import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
 // import { useTonConnect } from './hooks/useTonConnect';
 import  WebApp from "@twa-dev/sdk";
-import { BackButton, MainButton } from '@twa-dev/sdk/react';
+import { MainButton } from '@twa-dev/sdk/react';
 
 // import { useSenderAddr } from './hooks/useSenderAddr';
 // import { useCounterContract } from './hooks/useCounterContract';
@@ -11,23 +11,21 @@ import { BackButton, MainButton } from '@twa-dev/sdk/react';
 function App() {
   // const { sender } = useTonConnect();
   // const { value, address, sendIncrement } = useCounterContract();
-  WebApp.showAlert("Hey there!");
   return (
     <div className='App'>
       <div className='Container'>
         <TonConnectButton />
-        <BackButton
+        {/* <BackButton
             onClick={() => {
               WebApp.sendData("back  button");
-              window.history.back()
-
+              window.close()
             }}
-        />
+        /> */}
         <MainButton 
-          text="Click Main"
+          text="Back"
           onClick={() => {
-            WebApp.sendData("main button");
-            alert("test hello from main button");
+            WebApp.sendData("main button" + useTonWallet()?.account);
+            window.close()
           }}
         />
         
