@@ -29,7 +29,7 @@ function App() {
             if (connected)
               WebApp.sendData(getWallerAddr());
             else 
-              WebApp.sendData("");
+              WebApp.sendData("NULL");
           }}
         />
       </div>
