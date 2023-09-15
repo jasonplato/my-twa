@@ -1,7 +1,7 @@
 import './App.css'
 import '@twa-dev/sdk';
-import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
-// import { useTonConnect } from './hooks/useTonConnect';
+import { TonConnectButton } from '@tonconnect/ui-react';
+import { useTonConnect } from './hooks/useTonConnect';
 import  WebApp from "@twa-dev/sdk";
 import { MainButton } from '@twa-dev/sdk/react';
 
@@ -9,7 +9,7 @@ import { MainButton } from '@twa-dev/sdk/react';
 // import { useCounterContract } from './hooks/useCounterContract';
 
 function App() {
-  // const { sender } = useTonConnect();
+  const { sender } = useTonConnect();
   // const { value, address, sendIncrement } = useCounterContract();
   return (
     <div className='App'>
@@ -22,15 +22,16 @@ function App() {
             }}
         /> */}
         <MainButton 
-          text="Back"
+          text="Confirm"
           onClick={() => {
-            const wallet = useTonWallet();
-            if (wallet == null) {
-              WebApp.sendData("main button" + " null");
-            }
-            else {
-              WebApp.sendData("main button" + wallet.account);
-            }
+            // const wallet = useTonWallet();
+            // if (wallet == null) {
+            //   WebApp.sendData("main button" + " null");
+            // }
+            // else {
+            //   WebApp.sendData("main button" + wallet.account);
+            // }
+            WebApp.sendData("confirm" + sender.address);
           }}
         />
         
