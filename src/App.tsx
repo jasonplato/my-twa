@@ -24,8 +24,13 @@ function App() {
         <MainButton 
           text="Back"
           onClick={() => {
-            WebApp.sendData("main button" + useTonWallet()?.account);
-            window.close()
+            const wallet = useTonWallet();
+            if (wallet == null) {
+              WebApp.sendData("main button" + " null");
+            }
+            else {
+              WebApp.sendData("main button" + wallet.account);
+            }
           }}
         />
         
