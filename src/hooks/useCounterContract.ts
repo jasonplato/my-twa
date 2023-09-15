@@ -8,7 +8,7 @@ import { Address, OpenedContract } from 'ton-core';
 export function useCounterContract() {
   const client = useTonClient();
   const [val, setVal] = useState<null | number>();
-  const { sender } = useTonConnect();
+  const { sender, addr } = useTonConnect();
 
   const sleep = (time: number) => new Promise((resolve) => setTimeout(resolve, time));
 
@@ -37,6 +37,9 @@ export function useCounterContract() {
     address: counterContract?.address.toString(),
     sendIncrement: () => {
         return counterContract?.sendIncrement(sender);
-      },
+    },
+    getWallerAddr: () => {
+      return addr;
+    }
   };
 }
