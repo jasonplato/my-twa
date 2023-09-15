@@ -1,7 +1,6 @@
 import './App.css'
 import '@twa-dev/sdk';
 import { TonConnectButton } from '@tonconnect/ui-react';
-import { useTonConnect } from './hooks/useTonConnect';
 import  WebApp from "@twa-dev/sdk";
 import { MainButton } from '@twa-dev/sdk/react';
 
